@@ -1,0 +1,28 @@
+<%- include("partials/header.ejs") %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+</head>
+<body>
+    <h1>Blog posts</h1>
+    <% if (blogs && blogs.length>0){ %>
+        <ul>
+            <% for(let i=0;i<blogs.length;i++){ %>
+                <li>
+                    <a href="/blog/<%= i %>"><%= blogs[i].title %></a>
+                </li>
+            <% } %>
+        </ul>
+    <% }else{ %>
+        <p>No blog posts yet.</p>
+    <% } %>
+    <form action="/submit" method="POST">
+        <textarea name="text" class="feedback-input" placeholder="enter your blog"></textarea>
+        <input type="submit" value="Submit">
+    </form>
+
+</body>
+</html>
